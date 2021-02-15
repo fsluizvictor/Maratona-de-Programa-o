@@ -43,6 +43,10 @@ class Node implements Comparable<Node> {
         return right;
     }
 
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     public void add() {
         count++;
     }
@@ -116,7 +120,19 @@ class HuffmanTree {
         return letters;
     }
 
-    public String encode(String text) {
+    // public String encode(String text) {
+    // char[] letters = getChars(text);
+    // root = createTree(countFrequencies(letters));
+    // Map<Character, String> codemap = createCodeMap();
+
+    // StringBuilder data = new StringBuilder();
+    // for (char ch : letters) {
+    // data.append(codemap.get(ch));
+    // }
+    // return data.toString();
+    // }
+
+    public int encode(String text) {
         char[] letters = getChars(text);
         root = createTree(countFrequencies(letters));
         Map<Character, String> codemap = createCodeMap();
@@ -125,7 +141,11 @@ class HuffmanTree {
         for (char ch : letters) {
             data.append(codemap.get(ch));
         }
-        return data.toString();
+
+        root.setCount(0);
+        int weightTree = weightTree(root, 0);
+
+        return weightTree;
     }
 
     public String decode(String data) {
@@ -146,18 +166,33 @@ class HuffmanTree {
         }
         return result.toString();
     }
+
+    public int weightTree(Node n, int weight) {
+
+        while (n != null) {
+            weightTree(n.getLeft(), weight + n.getFrequency());
+            weightTree(n.getRight(), weight + n.getFrequency());
+        }
+        return weight;
+    }
+
 }
 
 public class arvore_huffman {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        String text = new String();
 
-        String text = in.nextLine().trim();
+        // while (in.hasNextLine()) {
+        text = in.next().trim();
+        // }
+
         HuffmanTree tree = new HuffmanTree();
-        String compressed = tree.encode(text);
-        System.out.println(compressed);
-        String descompressed = tree.decode(compressed);
-        System.out.println(descompressed);
+        int weight = tree.encode(text);
+        // System.out.println(compressed.getBytes().length * 4 + text.getBytes().length
+        // * 4);
+        // String descompressed = tree.decode(compressed);
+        // System.out.println(descompressed);
         // System.out.println(compressed.getBytes().length * 8 + " bits");
 
     }
