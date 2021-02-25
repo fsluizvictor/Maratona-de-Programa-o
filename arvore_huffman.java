@@ -63,7 +63,7 @@ class Node implements Comparable<Node> {
         return String.format("'%s': %d", ch, getFrequency());
     }
 
-    public void fillCodeMap(Map<Character, String> codemap, String work) {
+    public void fillCodeMap(Map<Character, String> codemap, String work) {  
         if (isLeaf()) {
             codemap.put(getSymbol(), work);
             return;
