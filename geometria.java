@@ -54,7 +54,7 @@ class Geometria {
         }
     }
 
-    static Ponto calculaDist(Ponto p1, Ponto p2) {
+    static int calculaDist(Ponto p1, Ponto p2) {
         int dist = (int) Math.sqrt(
                 Math.pow(p2.getDireito() - p1.getDireito(), 2) + Math.pow(p2.getEsquerdo() - p1.getEsquerdo(), 2));
         return dist;
@@ -64,7 +64,7 @@ class Geometria {
         return pontos.get(0);
     }
 
-    Ponto recursao(int l, int n, ArrayList<Ponto> pontos) {
+    static int recursao(int l, int n, ArrayList<Ponto> pontos) {
         if (n - l <= 3) {
             int minDist = 0;
             for (int i = 0; i < n; i++) {
