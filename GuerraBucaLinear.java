@@ -1,8 +1,9 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GuerraBucaLinear {
-
+    
     static int cont = 0;
 
     public static void main(String[] args) {
@@ -45,6 +46,5 @@ public class GuerraBucaLinear {
         }
 
         System.out.println(cont);
-
     }
 }
