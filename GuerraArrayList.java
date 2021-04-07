@@ -22,20 +22,18 @@ public class GuerraArrayList {
         Collections.sort(quadradonia);
         Collections.sort(nlogonia);
 
-        int cont = 0;
-        int res[] = new int[2];
-        for (int i = 0; i < qtd; i++) {
-            for (Integer quad : quadradonia) {
-                if (nlogonia.get(i) > quad) {
-                    quadradonia.remove(quad);
-                    cont++;
-                    break;
-                }
-            }
+        int n = 0, q = 0, vitorias = 0;
 
+        while (n < nlogonia.size() && q < quadradonia.size()) {
+            if (nlogonia.get(n) > quadradonia.get(q)) {
+                n++;
+                q++;
+                vitorias++;
+            } else {
+                n++;
+            }
         }
 
-        System.out.println(cont);
-
+        System.out.println(vitorias);
     }
 }

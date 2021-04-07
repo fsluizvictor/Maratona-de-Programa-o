@@ -1,4 +1,3 @@
-package aed2praticas;
 
 import java.util.Scanner;
 
